@@ -3,14 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create user</title>
+    <title>Admin panel</title>
 </head>
 <body>
 <form action="#" th:action="@{/create}" th:object="${user}" method="post">
-    <label for="username">User name</label>
-    <input type="text" th:field="*{username}" id="username" placeholder="User name">
+    <label for="username">Username</label>
+    <input type="text" th:field="*{username}" id="username" placeholder="username">
     <label for="password">Password</label>
-    <input type="text" th:field="*{password}" id="password" placeholder="Password">
+    <input type="text" th:field="*{password}" id="password" placeholder="password">
     <p>
         <select name="nameRoles" multiple size="2">
             <option th:each="role : ${roles}"
@@ -19,7 +19,7 @@
             </option>
         </select>
     </p>
-    <input type="submit" value="Add User">
+    <input type="submit" value="Add new user">
 </form>
 <form th:action="@{'/logout'}">
     <input type="submit" , value="Logout"/>
