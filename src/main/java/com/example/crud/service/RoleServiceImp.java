@@ -21,9 +21,10 @@ public class RoleServiceImp implements RoleService {
 
     @Override
     public Set<Role> getAllRoles() {
-        return  new HashSet<>(roleRepository.findAll());
+        return new HashSet<>(roleRepository.findAll());
     }
 
+    @Deprecated
     @Override
     public Role getRoleById(Long id) {
         return roleRepository.getOne(id);
@@ -31,7 +32,7 @@ public class RoleServiceImp implements RoleService {
 
     @Override
     public Set<Role> getRoleByName(String roleName) {
-        return  roleRepository.getRoleByRoleName(roleName);
+        return roleRepository.getRoleByRoleName(roleName);
     }
 
     @Override

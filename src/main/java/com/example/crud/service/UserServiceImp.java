@@ -16,7 +16,7 @@ import java.util.List;
 public class UserServiceImp implements UserService, UserDetailsService {
     private final UserRepository userRepository;
 
-    private final PasswordEncoder passwordEncoder ;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
@@ -24,6 +24,7 @@ public class UserServiceImp implements UserService, UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Deprecated
     @Override
     public User findById(Long id) {
         return userRepository.getOne(id);
@@ -54,7 +55,7 @@ public class UserServiceImp implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDetails userDetails = userRepository.findUserByUsername(username);
         if (userDetails == null) {
-            throw new UsernameNotFoundException("User with this " + username + " User Name not found");
+            throw new UsernameNotFoundException("User not found");
         }
         return userDetails;
     }
