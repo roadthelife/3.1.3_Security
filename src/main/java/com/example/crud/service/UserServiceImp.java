@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImp implements UserService, UserDetailsService {
     private final UserRepository userRepository;
 
@@ -31,27 +32,22 @@ public class UserServiceImp implements UserService, UserDetailsService {
     }
 
     @Override
-    @Transactional
     public List<User> getAll() {
         return userRepository.findAll();
     }
 
     @Override
-    @Transactional
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         return userRepository.save(user);
     }
 
     @Override
-    @Transactional
     public void deletedById(Long id) {
         userRepository.deleteById(id);
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDetails userDetails = userRepository.findUserByUsername(username);
         if (userDetails == null) {
